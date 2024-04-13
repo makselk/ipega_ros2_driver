@@ -34,9 +34,9 @@ void TwistPublisher::publisherCallback() {
     auto r_stick = ipegas[i]->getRightStick();
 
     geometry_msgs::msg::Twist twist;
-    twist.linear.x = (double)std::get<0>(r_stick) / 127.0;
-    twist.linear.y = (double)std::get<1>(r_stick) / 127.0;
-    twist.angular.z = (double)std::get<1>(l_stick) / 127.0;
+    twist.linear.x = (double)std::get<0>(r_stick) / 128.0;
+    twist.linear.y = (double)std::get<1>(r_stick) / 128.0;
+    twist.angular.z = (double)std::get<1>(l_stick) / 128.0;
 
     pubs[i]->publish(twist);
   }
