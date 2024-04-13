@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -27,8 +28,16 @@ endif()
 
 include_directories(include)
 
-add_executable(ipega_driver src/main.cpp src/ipega.cpp)
-ament_target_dependencies(ipega_driver rclcpp std_msgs)
+add_executable(ipega_driver 
+  src/main.cpp 
+  src/ipega.cpp
+  src/twist_publisher.cpp
+)
+ament_target_dependencies(ipega_driver 
+  rclcpp 
+  std_msgs 
+  geometry_msgs
+)
 
 install(TARGETS
   ipega_driver
